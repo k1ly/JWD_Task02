@@ -1,33 +1,32 @@
 package by.epamtc.lyskovkirill.task02.entity;
 
-import java.util.Objects;
-
 public class Ball {
+    private SimpleColor color;
+    private double weight;
 
-    private Colors color;
+    public Ball() {
+    }
 
-    public Colors getColor() {
+    public Ball(SimpleColor color, double weight){
+        this.color = color;
+        this.weight = Math.max(weight, 0);
+    }
+
+    public SimpleColor getColor() {
         return color;
     }
 
-    public void setColor(Colors color) {
+    public void setColor(SimpleColor color) {
         this.color = color;
     }
-
-    private double weight;
 
     public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) throws NegativeValueException {
-        if (weight < 0) throw new NegativeValueException(weight);
-        this.weight = weight;
-    }
-
-    public Ball(Colors color, double weight) throws Exception {
-        if (weight < 0) throw new NegativeValueException(weight);
-        this.color = color;
+    public void setWeight(double weight) throws NegativeValueException {
+        if (weight < 0)
+            throw new NegativeValueException("Ошибка: Вес " + weight + " не может быть отрицательным");
         this.weight = weight;
     }
 
@@ -41,7 +40,7 @@ public class Ball {
 
     @Override
     public int hashCode() {
-        return Objects.hash(color, weight);
+        return 47 * (int) weight + color.hashCode();
     }
 
     @Override

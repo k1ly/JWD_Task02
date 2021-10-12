@@ -1,6 +1,6 @@
 package by.epamtc.lyskovkirill.task02.util;
 
-import by.epamtc.lyskovkirill.task02.entity.Colors;
+import by.epamtc.lyskovkirill.task02.entity.SimpleColor;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ public class ConsoleScanner {
         scanner = new Scanner(System.in);
     }
 
-    public static int getInt() {
+    public static int enterInteger() {
         System.out.println("Введите целое число..");
         int ret = 0;
         while (scanner.hasNext()) {
@@ -25,7 +25,7 @@ public class ConsoleScanner {
         return ret;
     }
 
-    public static double getDouble() {
+    public static double enterDouble() {
         System.out.println("Введите число..");
         double ret = 0;
         while (scanner.hasNext()) {
@@ -39,21 +39,21 @@ public class ConsoleScanner {
         return ret;
     }
 
-    public static Colors getColor() {
+    public static SimpleColor enterColor() {
         System.out.println("Выберите цвет..");
-        for (int i =0; i< Colors.values().length; i++) {
-            System.out.println(i + 1 + " - " + Colors.values()[i]);
+        for (int i = 0; i< SimpleColor.values().length; i++) {
+            System.out.println(i + 1 + " - " + SimpleColor.values()[i]);
         }
         int num;
-        Colors ret = Colors.WHITE;
+        SimpleColor ret = SimpleColor.WHITE;
         while (scanner.hasNext()) {
             try {
                 num = Integer.parseInt(scanner.next()) - 1;
-                if (num < 0 || num > Colors.values().length) {
-                    System.out.println("Попробуйте ввести число от 1 до " + Colors.values().length + 1);
+                if (num < 0 || num > SimpleColor.values().length) {
+                    System.out.println("Попробуйте ввести число от 1 до " + SimpleColor.values().length + 1);
                     continue;
                 }
-                ret = Colors.values()[num];
+                ret = SimpleColor.values()[num];
                 break;
             } catch (Exception e) {
                 System.out.println("Попробуйте ввести число снова");

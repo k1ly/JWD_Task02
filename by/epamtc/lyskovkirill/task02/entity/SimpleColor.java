@@ -1,6 +1,6 @@
 package by.epamtc.lyskovkirill.task02.entity;
 
-public enum Colors {
+public enum SimpleColor {
     BLUE,
     RED,
     GREEN,
